@@ -1,144 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Block vs Inline – Mini Exercise</title>
-
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 30px;
-      background: #f8f9fa;
-      line-height: 1.5;
-    }
-
-    h1 {
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    /* Block-level demo */
-    .card {
-      background: #dfefff;
-      border: 2px solid #3498db;
-      padding: 16px;
-      margin: 20px auto;
-      max-width: 500px;
-      border-radius: 8px;
-    }
-
-    #highlight-card {
-      background: #d4edda;
-      border-color: #f39c12;
-      font-weight: bold;
-    }
-
-    /* Rainbow border */
-    .rainbow {
-      border: 5px solid;
-      border-image: linear-gradient(
-        to right,
-        red,
-        orange,
-        yellow,
-        green,
-        blue,
-        indigo,
-        violet
-      ) 1;
-    }
-
-    /* Inline-level demo */
-    .mark {
-      background: #ffe066;
-      padding: 3px 7px;
-      border-radius: 4px;
-    }
-
-    .urgent {
-      color: #e74c3c;
-      font-weight: bold;
-      text-decoration: underline wavy #e74c3c;
-    }
-
-    .fancy {
-      font-style: italic;
-      color: #27ae60;
-      border-bottom: 2px dotted #27ae60;
-    }
-
-    .wrapper {
-      border: 3px dashed #8e44ad;
-      padding: 25px;
-      background: white;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      border-radius: 10px;
-    }
-
-    .inline-block-demo {
-      display: inline-block;
-      background: #e8f5e9;
-      border: 2px solid #2ecc71;
-      padding: 12px 20px;
-      margin: 8px;
-      border-radius: 6px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>About Me - Courtney</title>
 </head>
-<body>
 
-  <div class="wrapper">
+<!-- This body tag creates a 20-pixel buffer around the page content. -->
+<body bgcolor="#eaf3ff" marginwidth="20" marginheight="20">
 
-    <h1>Block vs Inline – Practice Page</h1>
+<!-- The header introduces the page with a large, centered title and subtitle. -->
+<center>
+    <font face="Georgia" size="7" color="#123b70">
+        <b>About Me</b>
+    </font>
+    <br>
+    <font face="Arial" size="4" color="#4f6f8f">
+        A little bit about my hobbies and favorite things
+    </font>
+</center>
 
-    <div class="card">
-      This is a normal <code>div</code> → it is a <strong>block</strong> element.<br>
-      → starts on a new line<br>
-      → takes full available width (unless limited)
-    </div>
+<br>
 
-    <div class="card" id="highlight-card">
-      This <code>div</code> has <code>id="highlight-card"</code><br>
-      → An ID must be <strong>unique</strong> on the page
-    </div>
+<!-- These links provide different ways to move around and connect from the page. -->
+<center>
+    <a href="#about">About Me</a> |
+    <a href="#favorites">Favorite Things</a> |
+    <a href="#hobbies">Hobbies</a> |
+    <a href="mailto:courtney.l.chavez@ucdenver.edu">Email Me</a> |
+    <a href="https://www.alltrails.com/us/colorado" target="_blank">AllTrails Colorado</a>
+</center>
 
-    <div class="card rainbow">
-      <strong>Inline elements</strong> stay in the text flow:<br><br>
+<br>
 
-      Normal text with a <span class="mark urgent">highlighted</span> word.<br>
-      This is <span class="urgent">very important</span> information!<br>
-      We can also do <span class="fancy">fancy dotted underline text</span>.
-    </div>
+<!-- The main two-column layout is made entirely with a table. -->
+<table width="100%" border="1" cellpadding="15" cellspacing="0" bgcolor="#ffffff">
+    <tr valign="top">
 
-    <div class="card" style="display: inline-block;">
-      <strong>Quick summary – default display:</strong><br><br>
+        <!-- LEFT COLUMN -->
+        <td width="45%">
+            <a name="about"></a>
+            <font face="Georgia" size="5" color="#123b70">
+                <b>About Me</b>
+            </font>
 
-      <strong>Block:</strong> new line + full width<br>
-      → <code>div, p, h1–h6, section, article, header, footer, ul, ol, li</code><br><br>
+            <p>
+                Hi! My name is <font size="5" color="#8b3a62"><b>Courtney</b></font>.
+                In my free time, I like doing things that let me <i>have fun and be creative</i>.
+                Some of my favorite hobbies are <u>playing video games</u>, watching horror movies,
+                paddleboarding, and making crafts. I enjoy having a mix of relaxing activities
+                and things that keep me busy and entertained.
+            </p>
 
-      <strong>Inline:</strong> flows with text + only needed width<br>
-      → <code>span, a, strong, em, code, small, img</code>
-    </div>
+            <p>
+                I especially like <font size="4" color="#b22222"><b>horror movies</b></font>
+                because I enjoy being scared and watching interesting stories unfold.
+                Video games are another favorite because I can explore different worlds and
+                challenge myself. When I want to spend time outside, I enjoy paddleboarding,
+                and crafts give me a chance to make something <font color="#287a45"><b>creative</b></font>.
+            </p>
 
-    <div class="card">
-      <strong>Bonus experiment – inline-block:</strong><br><br>
+            <font face="Georgia" size="5" color="#123b70">
+                <b>My Inspiration</b>
+            </font>
 
-      <div class="inline-block-demo">Box A</div>
-      <div class="inline-block-demo">Box B</div>
-      <div class="inline-block-demo">Box C</div>
+            <blockquote>
+                <font face="Georgia" size="4" color="#444444">
+                    "There is something peaceful about being out on the lake,
+                    enjoying the water, and taking in the view."
+                </font>
+            </blockquote>
 
-      <div class="inline-block-demo">Box D</div>
-      <div class="inline-block-demo">Box E</div>
+            <p>
+                A phrase I like to remember is
+                <q><i>enjoy the water, enjoy the moment.</i></q>
+            </p>
 
-      <br><br>
+            <p>
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
+                     alt="Colorado mountain landscape"
+                     width="350"
+                     border="4"
+                     align="middle">
+            </p>
 
-      → <code>display: inline-block;</code> lets boxes sit side-by-side
-      like inline elements, but still respect width, height, margins, padding.
-    </div>
+            <center>
+                <font face="Arial" size="2" color="#555555">
+                    I love being close to the water.
+                </font>
+            </center>
+        </td>
 
-  </div>
+        <!-- RIGHT COLUMN -->
+        <td width="55%">
+            <a name="hobbies"></a>
+            <font face="Georgia" size="5" color="#123b70">
+                <b>My Hobbies</b>
+            </font>
+
+            <ol type="I" start="1">
+                <li>Playing video games</li>
+                <li>Watching horror movies</li>
+                <li>Paddleboarding</li>
+                <li>Making crafts</li>
+            </ol>
+
+            <font face="Georgia" size="5" color="#123b70">
+                <b>Things I Enjoy</b>
+            </font>
+
+            <ul type="circle">
+                <li>Trying new video games</li>
+                <li>Finding good horror movies</li>
+                <li>Spending time on the water</li>
+                <li>Creating fun crafts</li>
+            </ul>
+
+            <a name="favorites"></a>
+            <font face="Georgia" size="5" color="#123b70">
+                <b>Some Favorite Things</b>
+            </font>
+
+            <!-- This nested table gives the page a clear table of favorite things. -->
+            <table width="100%" border="2" cellpadding="8" cellspacing="0">
+                <tr bgcolor="#4d88b5">
+                    <th>
+                        <font color="white" size="4">Category</font>
+                    </th>
+                    <th>
+                        <font color="white" size="4">Favorite</font>
+                    </th>
+                    <th>
+                        <font color="white" size="4">Why</font>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td><b>Book</b></td>
+                    <td>Frankenstein</td>
+                    <td>Great horror story</td>
+                </tr>
+
+                <tr bgcolor="#eef6fc">
+                    <td><i>Movie</i></td>
+                    <td>Pulp Fiction</td>
+                    <td>Interesting and entertaining</td>
+                </tr>
+
+                <tr>
+                    <td><b>Lake</b></td>
+                    <td>Boyd Lake</td>
+                    <td>Beautiful places to visit</td>
+                </tr>
+
+                <tr bgcolor="#eef6fc">
+                    <td><u>Season</u></td>
+                    <td>Fall</td>
+                    <td>Halloween</td>
+                </tr>
+            </table>
+
+            <br>
+
+            <font face="Arial" size="3">
+                Want to talk about books or hiking?
+                <a href="mailto:courtney.l.chavez@ucdenver.edu"><b>Email me!</b></a>
+            </font>
+
+            <p>
+                <a href="#about">Jump back to the About Me section</a>
+            </p>
+
+            <p>
+                <a href="https://www.alltrails.com/us/colorado" target="_blank">
+                    More inspiration: AllTrails Colorado
+                </a>
+            </p>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<center>
+    <font face="Arial" size="2" color="#555555">
+        Thanks for visiting my page!
+    </font>
+</center>
 
 </body>
 </html>
