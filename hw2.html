@@ -1,0 +1,266 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favorite Books</title>
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 30px;
+      background: #f8f9fa;
+      line-height: 1.5;
+    }
+
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .card {
+      background: #dfefff;
+      border: 2px solid #3498db;
+      padding: 16px;
+      margin: 20px auto;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    #highlight-card {
+      background: #d4edda;
+      border-color: #f39c12;
+      font-weight: bold;
+    }
+
+    /* Rainbow border from Exercise 3 */
+    .rainbow {
+      border: 5px solid;
+      border-image: linear-gradient(
+        to right,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        indigo,
+        violet
+      ) 1;
+    }
+
+    .mark {
+      background: #ffe066;
+      padding: 3px 7px;
+      border-radius: 4px;
+    }
+
+    .urgent {
+      color: #e74c3c;
+      font-weight: bold;
+      text-decoration: underline wavy #e74c3c;
+    }
+
+    .fancy {
+      font-style: italic;
+      color: #27ae60;
+      border-bottom: 2px dotted #27ae60;
+    }
+
+    .wrapper {
+      border: 3px dashed #8e44ad;
+      padding: 25px;
+      background: white;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      border-radius: 10px;
+    }
+
+    .inline-block-demo {
+      display: inline-block;
+      background: #e8f5e9;
+      border: 2px solid #2ecc71;
+      padding: 12px 20px;
+      margin: 8px;
+      border-radius: 6px;
+    }
+
+    /* Changed one card to inline-block */
+    .book-card {
+      display: inline-block;
+      vertical-align: top;
+      width: 40%;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <h1>My Favorite Books</h1>
+
+    <div class="card rainbow">
+      <h2>Welcome to My Book Page!</h2>
+
+      <p>
+        Books are a great way to relax and escape into another world.
+        I especially enjoy <strong>horror and classic books</strong>.
+      </p>
+
+      <p>
+        One of my favorite books is
+        <span class="mark urgent">Frankenstein</span>
+        because it has a dark and interesting story.
+      </p>
+    </div>
+
+
+    <div class="card" id="highlight-card">
+
+      <h2>My Favorite Genres</h2>
+
+      <p>
+        My favorite types of books include:
+      </p>
+
+      <ul>
+        <li>Horror</li>
+        <li>Classic Fiction</li>
+        <li>Gothic Fiction</li>
+        <li>Drama</li>
+      </ul>
+
+      <p>
+        <span class="urgent">Horror</span> is probably my favorite
+        because I enjoy stories that are creepy and suspenseful.
+      </p>
+
+    </div>
+
+
+    <div class="card book-card">
+
+      <h2>The Shining</h2>
+
+      <p>
+        <strong>Author:</strong> Stephen King
+      </p>
+
+      <p>
+        This is one of my favorite horror novels because
+        <em>it is creepy and suspenseful.</em>
+      </p>
+
+    </div>
+
+
+    <div class="card book-card">
+
+      <h2>The Great Gatsby</h2>
+
+      <p>
+        <strong>Author:</strong> F. Scott Fitzgerald
+      </p>
+
+      <p>
+        I like the characters and the story.
+        <span class="fancy">It is also an interesting classic.</span>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>More Favorite Books</h2>
+
+      <table border="1" cellpadding="10" cellspacing="0" width="100%">
+
+        <tr bgcolor="#cccccc">
+          <th>Book</th>
+          <th>Author</th>
+          <th>Genre</th>
+        </tr>
+
+        <tr>
+          <td><b>Push</b></td>
+          <td>Sapphire</td>
+          <td>Drama</td>
+        </tr>
+
+        <tr>
+          <td><b>Frankenstein</b></td>
+          <td>Mary Shelley</td>
+          <td>Gothic Fiction</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>Inline-Block Practice</h2>
+
+      <p>
+        These boxes use <code>display: inline-block;</code> so they
+        can sit next to each other.
+      </p>
+
+      <div class="inline-block-demo">
+        <strong>Horror</strong>
+      </div>
+
+      <div class="inline-block-demo">
+        <strong>Classic</strong>
+      </div>
+
+      <div class="inline-block-demo">
+        <strong>Drama</strong>
+      </div>
+
+      <div class="inline-block-demo">
+        <strong>Gothic</strong>
+      </div>
+
+      <div class="inline-block-demo">
+        <strong>Fantasy</strong>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>Quick Links</h2>
+
+      <p>
+        Check out
+        <a href="https://www.goodreads.com/" target="_blank">
+          Goodreads
+        </a>
+        to find more books.
+      </p>
+
+      <p>
+        You can also visit
+        <a href="https://www.amazon.com/books" target="_blank">
+          Amazon Books
+        </a>
+        to look for new books.
+      </p>
+
+      <p>
+        <a href="#top">Back to the top</a>
+      </p>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
+```
