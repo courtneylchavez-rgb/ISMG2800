@@ -1,222 +1,51 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Travel Bucket List</title>
+<style>
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
 
-    <style>
-        body {
-            background-color: #f5efff;
-            margin: 20px;
-            font-family: Arial, sans-serif;
-            color: #3d315b;
-        }
+table {
+  margin: auto;
+  border-spacing: 30px;
+}
 
-        h1 {
-            font-family: Georgia, serif;
-            color: #ffffff;
-            background-color: #7b68ee;
-            text-align: center;
-            padding: 20px;
-            border: 3px solid #5a4bb7;
-            margin-bottom: 25px;
-        }
+.image1 {
+  opacity: 0.5;
+}
 
-        h2 {
-            font-family: "Trebuchet MS", sans-serif;
-            color: #8e4585;
-            border-bottom: 2px solid #d66ba0;
-            padding-bottom: 5px;
-        }
+.image1:hover {
+  opacity: 1.0;
+}
 
-        p {
-            font-family: "Courier New", monospace;
-            line-height: 1.6;
-            background-color: #fff0f7;
-            padding: 15px;
-            border: 1px solid #d8a1c4;
-            margin: 15px 0;
-        }
+.image2 {
+  opacity: 0.8;
+}
 
-        .travel-images {
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .travel-images img {
-            width: 350px;
-            height: 220px;
-            object-fit: cover;
-            margin: 10px;
-            border: 5px solid #ffffff;
-            box-shadow: 0 0 8px #8a78c9;
-        }
-
-        ul, ol {
-            background-color: #e8e3ff;
-            padding: 20px 40px;
-            border-left: 5px solid #6c63c7;
-            margin: 20px 0;
-        }
-
-        li {
-            margin: 8px;
-        }
-
-        ol {
-            background-color: #ffe4f0;
-            border-left: 5px solid #d66ba0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #ffffff;
-            margin: 20px 0;
-        }
-
-        th {
-            background-color: #667eea;
-            color: white;
-            padding: 12px;
-            border: 1px solid #5367c7;
-        }
-
-        td {
-            padding: 10px;
-            border: 1px solid #b8a9d9;
-            text-align: center;
-        }
-
-        tr:hover {
-            background-color: #e6ddff;
-        }
-
-        a {
-            color: #8e4585;
-            font-weight: bold;
-            text-decoration: none;
-            margin-right: 15px;
-        }
-
-        a:hover {
-            color: white;
-            background-color: #c75c9b;
-            padding: 5px;
-            border-radius: 5px;
-        }
-
-        .links {
-            background-color: #e8e0ff;
-            padding: 15px;
-            border: 2px dashed #8a6fc4;
-            margin-top: 25px;
-        }
-
-        .back {
-            text-align: center;
-            font-family: "Comic Sans MS", cursive;
-            margin-top: 25px;
-        }
-    </style>
+.image2:hover {
+  opacity: 0.3;
+}
+</style>
 </head>
 
-<body id="top">
+<body>
 
-    <h1>My Travel Bucket List</h1>
+<h2>Opacity and Hover Effects</h2>
 
-    <h2>Why I Love Traveling</h2>
+<p>Move your mouse over the images to see the different opacity effects.</p>
 
-    <p>
-        I like to travel because it gives me a chance to see places that are
-        different from what I am used to. I enjoy exploring new cities, trying
-        different foods, seeing beautiful scenery, and making memories along
-        the way. Traveling also gives me a break from my normal routine and
-        lets me experience new things.
-    </p>
-
-    <div class="travel-images">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
-             alt="Beautiful mountain landscape">
-
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-             alt="Tropical beach">
-    </div>
-
-    <h2 id="activities">Things I Enjoy Doing While Traveling</h2>
-
-    <ul>
-        <li>Trying local food and restaurants</li>
-        <li>Exploring beaches and lakes</li>
-        <li>Taking pictures of interesting places</li>
-        <li>Visiting museums and historical sites</li>
-        <li>Going on hikes and outdoor adventures</li>
-        <li>Shopping for souvenirs</li>
-    </ul>
-
-    <h2>My Top 5 Dream Travel Destinations</h2>
-
-    <ol>
-        <li>Japan</li>
-        <li>Germany</li>
-        <li>Italy</li>
-        <li>Russia</li>
-        <li>South Korea</li>
-    </ol>
-
-    <h2>Comparing Three Cities</h2>
-
-    <table>
-        <tr>
-            <th>City</th>
-            <th>Country</th>
-            <th>Best Season to Visit</th>
-            <th>Famous For</th>
-        </tr>
-
-        <tr>
-            <td>Tokyo</td>
-            <td>Japan</td>
-            <td>Spring</td>
-            <td>Cherry Blossoms and Food</td>
-        </tr>
-
-        <tr>
-            <td>Berlin</td>
-            <td>Germany</td>
-            <td>Summer</td>
-            <td>History and Architecture</td>
-        </tr>
-
-        <tr>
-            <td>Seoul</td>
-            <td>South Korea</td>
-            <td>Spring or Fall</td>
-            <td>Food, Culture, and Technology</td>
-        </tr>
-    </table>
-
-    <div class="links">
-        <h2>Travel Links</h2>
-
-        <a href="https://en.wikipedia.org/wiki/Japan" target="_blank">
-            Learn More About Japan
-        </a>
-
-        <a href="#activities">
-            Jump to Travel Activities
-        </a>
-
-        <a href="https://www.japan.travel/en/" target="_blank">
-            Official Japan Tourism Website
-        </a>
-    </div>
-
-    <p class="back">
-        <a href="#top">Back to the Top</a>
-    </p>
+<table>
+  <tr>
+    <td>
+      <img class="image1" src="img_forest.jpg" alt="Forest" width="250" height="150">
+    </td>
+    <td>
+      <img class="image2" src="img_mountains.jpg" alt="Mountains" width="250" height="150">
+    </td>
+  </tr>
+</table>
 
 </body>
 </html>
