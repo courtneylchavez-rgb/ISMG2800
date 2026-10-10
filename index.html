@@ -1,34 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyApp Dashboard</title>
 
-.navbar {
-  background-color: dimgray;
-  overflow: hidden;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.navbar a {
-  float: left;
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff5fb;
+            display: flex;
+            min-height: 100vh;
+        }
 
-.navbar a:hover {
-  background-color: #04AA6D;
-}
+        /* Left navigation bar */
+        .sidebar {
+            width: 300px;
+            background-color: #482653;
+            color: white;
+            min-height: 100vh;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+        }
 
-</style>
+        /* App title */
+        .logo {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 30px 10px;
+            border-bottom: 1px solid #63396d;
+        }
+
+        /* Navigation links */
+        .navigation {
+            padding: 20px;
+        }
+
+        .navigation a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        /* Highlight the active link */
+        .navigation a.active {
+            background-color: #e754a6;
+        }
+
+        /* Hover effect */
+        .navigation a:hover {
+            background-color: #c13c91;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 40px 55px;
+            color: #34203d;
+        }
+
+        .main-content h1 {
+            font-size: 42px;
+            margin-top: 15px;
+            color: #482653;
+        }
+
+        .main-content p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        /* Smaller screen adjustments */
+        @media (max-width: 650px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+            }
+
+            .navigation {
+                padding: 10px;
+            }
+
+            .navigation a {
+                padding: 12px;
+                margin-bottom: 5px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .main-content h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="navbar">
-  <a href="#">Home</a>
-  <a href="#">News</a>
-  <a href="#">Contact</a>
-  <a href="#">About</a>
-</div>
+    <div class="sidebar">
+        <div class="logo">MyApp</div>
+
+        <nav class="navigation">
+            <a href="#" class="active">🏠 Dashboard</a>
+            <a href="#analytics">📊 Analytics</a>
+            <a href="#projects">📁 Projects</a>
+            <a href="#team">👥 Team</a>
+            <a href="#messages">💌 Messages</a>
+            <a href="#settings">⚙️ Settings</a>
+            <a href="#documents">📄 Documents</a>
+            <a href="#logout">🚪 Logout</a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <h1>Welcome to the Dashboard</h1>
+        <p>Click on the links in the vertical navigation bar on the left.</p>
+
+        <section id="analytics">
+            <h2>📊 Analytics</h2>
+            <p>View your progress and check your latest statistics.</p>
+        </section>
+
+        <section id="projects">
+            <h2>📁 Projects</h2>
+            <p>Keep track of your current projects and future goals.</p>
+        </section>
+
+        <section id="team">
+            <h2>👥 Team</h2>
+            <p>Meet your team and see what everyone is working on.</p>
+        </section>
+
+        <section id="messages">
+            <h2>💌 Messages</h2>
+            <p>Check your messages and stay connected.</p>
+        </section>
+
+        <section id="settings">
+            <h2>⚙️ Settings</h2>
+            <p>Customize your account and preferences.</p>
+        </section>
+
+        <section id="documents">
+            <h2>📄 Documents</h2>
+            <p>Find your saved documents and files.</p>
+        </section>
+
+        <section id="logout">
+            <h2>🚪 Logout</h2>
+            <p>You have reached the logout section.</p>
+        </section>
+    </main>
 
 </body>
 </html>
