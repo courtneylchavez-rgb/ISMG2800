@@ -1,312 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taco Loco | Fresh Flavor, Big Fun</title>
-<style>
-:root {
-  --red: #b93b2d;
-  --tomato: #e64f3e;
-  --yellow: #ffd34e;
-  --cream: #fff9ef;
-  --charcoal: #292929;
-  --ink: #332c28;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-}
-header {
-  background: var(--red);
-  color: white;
-  min-height: 112px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  padding: 18px 4%;
-  box-shadow: 0 5px 16px #00000022;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--yellow);
-  font-size: 29px;
-  font-weight: 800;
-  line-height: 1.05;
-  text-decoration: none;
-  letter-spacing: .5px;
-}
-.brand .emoji { font-size: 35px; }
-nav { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
-nav a, .drop-label {
-  display: block;
-  color: white;
-  text-decoration: none;
-  font-size: 17px;
-  padding: 12px 14px;
-  border-radius: 6px;
-  transition: background-color .25s ease, color .25s ease;
-}
-nav a:hover, .drop-label:hover { background: #8f2b22; color: var(--yellow); }
-.dropdown { position: relative; }
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
-  padding: 0;
-  margin: 0;
-  background: var(--charcoal);
-  list-style: none;
-  border-top: 5px solid var(--yellow);
-  box-shadow: 0 12px 24px #00000035;
-}
-.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu { display: block; }
-.dropdown-menu a {
-  border-radius: 0;
-  padding: 13px 18px;
-  border-bottom: 1px solid #454545;
-  white-space: nowrap;
-}
-.dropdown-menu a:hover { background: var(--tomato); color: white; }
-.hero {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: 38px;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 64px 28px;
-}
-.eyebrow {
-  color: var(--red);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: bold;
-  font-size: 13px;
-}
-h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.08; margin: 12px 0 18px; }
-h1 span { color: var(--red); }
-.hero p { max-width: 540px; font-size: 18px; color: #5c514a; }
-.button {
-  display: inline-block;
-  margin-top: 15px;
-  background: var(--red);
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 14px 24px;
-  border-radius: 8px;
-  box-shadow: 0 5px 0 #7f281f;
-  transition: opacity .25s ease, transform .25s ease;
-}
-.button:hover { opacity: .62; transform: translateY(-2px); }
-.hero-image {
-  width: 100%;
-  height: 365px;
-  object-fit: cover;
-  border-radius: 22px 22px 70px 22px;
-  border: 6px solid white;
-  box-shadow: 0 14px 30px #4c2b1d26;
-  transition: transform .35s ease, filter .35s ease;
-}
-.hero-image:hover { transform: scale(1.025) rotate(1deg); filter: saturate(1.15); }
-.features {
-  background: #f5e6d2;
-  padding: 48px 24px;
-  text-align: center;
-  border-top: 4px double #e4c6a5;
-  border-bottom: 4px double #e4c6a5;
-}
-h2 { margin: 0 0 10px; font-size: 32px; }
-.section-intro { margin: 0 auto 28px; max-width: 650px; color: #66574e; }
-.feature-grid {
-  max-width: 1050px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.feature-card {
-  background: white;
-  padding: 24px;
-  border-radius: 14px;
-  border: 2px solid #f0d5b9;
-  box-shadow: 0 7px 18px #6a3b1a12;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.feature-card:hover { transform: translateY(-7px); box-shadow: 0 13px 25px #6a3b1a20; }
-.feature-card .icon { font-size: 32px; }
-.feature-card h3 { margin: 8px 0; color: var(--red); }
-.menu-section { max-width: 1000px; margin: 0 auto; padding: 58px 24px; }
-.menu-section h2 { text-align: center; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 24px;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 22px #00000012;
-}
-th { background: var(--charcoal); color: var(--yellow); text-align: left; }
-th, td { padding: 16px 20px; border-bottom: 1px solid #eadfd4; }
-tbody tr:nth-child(even) { background: #fff0df; }
-tbody tr:hover { background: #ffe0b5; }
-.price { font-weight: bold; color: var(--red); white-space: nowrap; }
-.specials {
-  background: var(--red);
-  color: white;
-  padding: 52px 24px;
-  text-align: center;
-}
-.specials p { max-width: 680px; margin: 10px auto 22px; }
-.specials .button { background: var(--yellow); color: var(--charcoal); box-shadow: 0 5px 0 #9c7120; }
-.gallery {
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 55px 24px;
-  text-align: center;
-}
-.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px; }
-.gallery-grid img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 5px solid white;
-  box-shadow: 0 7px 20px #00000020;
-  transition: transform .3s ease, opacity .3s ease;
-}
-.gallery-grid img:hover { transform: scale(1.03); opacity: .86; }
-footer { background: var(--charcoal); color: #f7eee5; text-align: center; padding: 25px 18px; }
-footer p { margin: 5px; }
-footer a { color: var(--yellow); }
-@media (max-width: 850px) {
-  header { align-items: flex-start; flex-direction: column; }
-  nav { flex-wrap: wrap; justify-content: flex-start; gap: 2px; }
-  nav a, .drop-label { padding: 9px 10px; }
-  .hero { grid-template-columns: 1fr; padding-top: 42px; }
-  .hero-image { height: 300px; }
-}
-@media (max-width: 600px) {
-  .feature-grid, .gallery-grid { grid-template-columns: 1fr; }
-  .dropdown-menu { min-width: 190px; }
-  th, td { padding: 12px 10px; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco Loco | Fresh Flavor, Big Fun</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff9ef;
+            color: #332c28;
+            line-height: 1.6;
+        }
+
+        /* Navigation bar */
+        header {
+            background-color: #b93b2d;
+            color: white;
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 4%;
+            gap: 20px;
+            box-shadow: 0 5px 16px #0003;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffd34e;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+
+        .logo span:first-child {
+            font-size: 36px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a,
+        .dropdown-label {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover,
+        .dropdown-label:hover {
+            background-color: #8f2b22;
+            color: #ffd34e;
+        }
+
+        /* Dropdown menus */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 230px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #292929;
+            border-top: 5px solid #ffd34e;
+            box-shadow: 0 12px 24px #0004;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 16px;
+            border-bottom: 1px solid #444;
+            border-radius: 0;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #e64f3e;
+            color: white;
+        }
+
+        /* Homepage introduction */
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .eyebrow {
+            color: #b93b2d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.12;
+            margin: 12px 0 18px;
+        }
+
+        h1 span {
+            color: #b93b2d;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #5c514a;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 14px 24px;
+            background-color: #b93b2d;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 5px 0 #7f281f;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            opacity: 0.6;
+            transform: translateY(-3px);
+        }
+
+        /* Main food photo */
+        .hero-image {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border: 6px solid white;
+            border-radius: 25px 25px 70px 25px;
+            box-shadow: 0 12px 28px #0003;
+            transition: transform 0.4s, filter 0.4s;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.03);
+            filter: saturate(1.3);
+        }
+
+        /* About section */
+        .features {
+            padding: 50px 25px;
+            text-align: center;
+            background-color: #f5e6d2;
+            border-top: 5px double #e4c6a5;
+            border-bottom: 5px double #e4c6a5;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-top: 0;
+        }
+
+        .section-intro {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #66574e;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 25px;
+            border: 2px solid #f0d5b9;
+            border-radius: 15px;
+            box-shadow: 0 7px 18px #6a3b1a20;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 25px #6a3b1a30;
+        }
+
+        .feature-card .icon {
+            font-size: 35px;
+        }
+
+        .feature-card h3 {
+            color: #b93b2d;
+        }
+
+        /* Menu table */
+        .menu-section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .menu-section h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 22px #0002;
+        }
+
+        th {
+            background-color: #292929;
+            color: #ffd34e;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #eadfd4;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fff0df;
+        }
+
+        tbody tr:hover {
+            background-color: #ffe0b5;
+        }
+
+        .price {
+            color: #b93b2d;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Specials section */
+        .specials {
+            padding: 50px 25px;
+            text-align: center;
+            background-color: #b93b2d;
+            color: white;
+        }
+
+        .specials p {
+            max-width: 700px;
+            margin: 12px auto;
+        }
+
+        .specials .button {
+            background-color: #ffd34e;
+            color: #292929;
+            box-shadow: 0 5px 0 #9c7120;
+        }
+
+        /* Food gallery */
+        .gallery {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px 25px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border: 5px solid white;
+            border-radius: 18px;
+            box-shadow: 0 8px 22px #0003;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.04);
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #292929;
+            color: #f7eee5;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 39px;
+            }
+
+            th,
+            td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
 <header>
-  <a class="brand" href="#home"><span class="emoji">🌮</span><span>TACO<br>LOCO</span></a>
-  <nav aria-label="Main navigation">
-    <a href="#home">Home</a>
-    <div class="dropdown">
-      <a class="drop-label" href="#menu">Menu ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="#tacos">Tacos 🌮</a></li>
-        <li><a href="#burritos">Burritos &amp; Bowls</a></li>
-        <li><a href="#quesadillas">Quesadillas</a></li>
-        <li><a href="#sides">Sides &amp; Snacks</a></li>
-        <li><a href="#drinks">Drinks</a></li>
-        <li><a href="#desserts">Desserts</a></li>
-      </ul>
-    </div>
-    <div class="dropdown">
-      <a class="drop-label" href="#specials">Specials ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="#taco-tuesday">Taco Tuesday</a></li>
-        <li><a href="#lunch-deal">Lunch Combo</a></li>
-        <li><a href="#family-night">Family Night</a></li>
-      </ul>
-    </div>
-    <a href="#locations">Locations</a>
-    <div class="dropdown">
-      <a class="drop-label" href="#about">About Us ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="#our-story">Our Story</a></li>
-        <li><a href="#our-values">Our Values</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </div>
-    <a href="#menu">Order Now</a>
-  </nav>
+    <a href="#home" class="logo">
+        <span>🌮</span>
+        <span>TACO<br>LOCO</span>
+    </a>
+
+    <nav>
+        <a href="#home">Home</a>
+
+        <div class="dropdown">
+            <a href="#menu" class="dropdown-label">Menu ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#tacos">Tacos 🌮</a></li>
+                <li><a href="#burritos">Burritos &amp; Bowls</a></li>
+                <li><a href="#quesadillas">Quesadillas</a></li>
+                <li><a href="#sides">Sides &amp; Snacks</a></li>
+                <li><a href="#drinks">Drinks</a></li>
+                <li><a href="#desserts">Desserts</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <a href="#specials" class="dropdown-label">Specials ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#taco-tuesday">Taco Tuesday</a></li>
+                <li><a href="#lunch-deal">Lunch Combo</a></li>
+                <li><a href="#family-night">Family Night</a></li>
+            </ul>
+        </div>
+
+        <a href="#locations">Locations</a>
+
+        <div class="dropdown">
+            <a href="#about" class="dropdown-label">About Us ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#our-story">Our Story</a></li>
+                <li><a href="#our-values">Our Values</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <a href="#menu">Order Now</a>
+    </nav>
 </header>
 
 <main>
-  <section class="hero" id="home">
-    <div>
-      <div class="eyebrow">Fresh ingredients · Big flavor · Good vibes</div>
-      <h1>Meet your new favorite <span>taco spot.</span></h1>
-      <p>At Taco Loco, we bring people together with bold Mexican-inspired flavors, fresh ingredients, and food made with care. From sizzling street tacos to loaded burrito bowls, every bite is a little celebration.</p>
-      <p>Come hungry, leave happy. That's the Taco Loco promise.</p>
-      <a class="button" href="#menu">Explore Our Menu</a>
-    </div>
-    <img class="hero-image" src="taco-photo.png" alt="Fresh carne asada tacos with cilantro, lime, and salsa">
-  </section>
 
-  <section class="features" id="about">
-    <h2 id="our-values">Why Everyone Loves Taco Loco</h2>
-    <p class="section-intro" id="our-story">We're all about honest ingredients, generous portions, and a welcoming place where friends and families can share a great meal.</p>
-    <div class="feature-grid">
-      <article class="feature-card"><div class="icon">🥑</div><h3>Fresh Every Day</h3><p>Bright toppings, zesty salsa, and ingredients chosen for flavor.</p></article>
-      <article class="feature-card"><div class="icon">🔥</div><h3>Made Your Way</h3><p>Pick your favorites and make your meal as mild or spicy as you like.</p></article>
-      <article class="feature-card"><div class="icon">💛</div><h3>Good Food, Good Mood</h3><p>Friendly service and satisfying food without the fuss.</p></article>
-    </div>
-  </section>
+    <!-- Homepage description -->
+    <section class="hero" id="home">
+        <div>
+            <div class="eyebrow">
+                Fresh Ingredients • Big Flavor • Good Vibes
+            </div>
 
-  <section class="menu-section" id="menu">
-    <h2>A Little Taste of Taco Loco</h2>
-    <p class="section-intro" style="text-align:center">Fresh favorites, easy prices, and something for everyone.</p>
-    <table>
-      <thead><tr><th>Menu Favorite</th><th>What's Inside</th><th>Price</th></tr></thead>
-      <tbody>
-        <tr id="tacos"><td>Street Tacos 🌮</td><td>Three corn tortillas, seasoned meat, onion, cilantro, and salsa</td><td class="price">$10.50</td></tr>
-        <tr id="burritos"><td>Burrito Bowl</td><td>Rice, beans, grilled veggies, pico de gallo, and your choice of protein</td><td class="price">$12.00</td></tr>
-        <tr id="quesadillas"><td>Cheesy Quesadilla</td><td>Toasted tortilla, melted cheese, and salsa on the side</td><td class="price">$9.00</td></tr>
-        <tr id="sides"><td>Chips &amp; Guac</td><td>Crispy tortilla chips with fresh, creamy guacamole</td><td class="price">$5.50</td></tr>
-        <tr id="drinks"><td>Horchata</td><td>Chilled cinnamon rice drink</td><td class="price">$3.00</td></tr>
-        <tr id="desserts"><td>Churro Bites</td><td>Warm cinnamon-sugar bites with chocolate dip</td><td class="price">$4.50</td></tr>
-      </tbody>
-    </table>
-  </section>
+            <h1>
+                Meet your new favorite
+                <span>taco spot.</span>
+            </h1>
 
-  <section class="specials" id="specials">
-    <h2>Good Deals. Great Tacos.</h2>
-    <p id="taco-tuesday"><strong>Taco Tuesday:</strong> Mix and match three street tacos for a special price.</p>
-    <p id="lunch-deal"><strong>Lunch Combo:</strong> Pair a burrito bowl with a drink for an easy midday win.</p>
-    <p id="family-night"><strong>Family Night:</strong> Bring your crew and make dinner the best part of the day.</p>
-    <a class="button" href="#contact">Ask About Today's Specials</a>
-  </section>
+            <p>
+                Welcome to Taco Loco! We bring people together
+                with delicious Mexican-inspired food, fresh
+                ingredients, and bold flavors. From sizzling
+                street tacos to loaded burrito bowls, every meal
+                is made to satisfy your cravings.
+            </p>
 
-  <section class="gallery" id="locations">
-    <h2>Fresh Flavor, Wherever You Are</h2>
-    <p class="section-intro">Stop by for a quick lunch, grab dinner on the go, or bring your favorite people along.</p>
-    <div class="gallery-grid">
-      <img src="taco-photo.png" alt="Taco Loco street tacos ready to serve">
-      <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=85" alt="Colorful Mexican-inspired food with fresh toppings">
-    </div>
-    <p id="contact">Visit us in your neighborhood or contact our team for catering and group orders.</p>
-    <a class="button" href="mailto:hello@tacoloco.example">Contact Taco Loco</a>
-  </section>
+            <p>
+                Our goal is simple: serve great food, treat people
+                right, and make every visit something to look
+                forward to.
+            </p>
+
+            <a href="#menu" class="button">Explore Our Menu</a>
+        </div>
+
+        <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1000&q=85"
+            alt="Fresh Mexican-inspired tacos"
+            loading="eager"
+        >
+    </section>
+
+    <!-- About Us -->
+    <section class="features" id="about">
+        <h2 id="our-values">Why Everyone Loves Taco Loco</h2>
+
+        <p class="section-intro" id="our-story">
+            We believe good food should bring people together.
+            That's why we focus on fresh ingredients, generous
+            portions, friendly service, and a relaxed atmosphere
+            where everyone feels welcome.
+        </p>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <div class="icon">🥑</div>
+                <h3>Fresh Every Day</h3>
+                <p>Fresh toppings, zesty salsa, and ingredients selected for flavor.</p>
+            </article>
+
+            <article class="feature-card">
+                <div class="icon">🔥</div>
+                <h3>Made Your Way</h3>
+                <p>Choose your favorites and make your meal as mild or spicy as you like.</p>
+            </article>
+
+            <article class="feature-card">
+                <div class="icon">💛</div>
+                <h3>Good Food, Good Mood</h3>
+                <p>Friendly service and satisfying food without the fuss.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Menu table -->
+    <section class="menu-section" id="menu">
+        <h2>A Little Taste of Taco Loco</h2>
+
+        <p class="section-intro" style="text-align:center">
+            Fresh favorites, easy prices, and something for everyone.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Menu Favorite</th>
+                    <th>What's Inside</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr id="tacos">
+                    <td>Street Tacos 🌮</td>
+                    <td>Three corn tortillas, seasoned meat, onion, cilantro, and salsa.</td>
+                    <td class="price">$10.50</td>
+                </tr>
+
+                <tr id="burritos">
+                    <td>Burrito Bowl</td>
+                    <td>Rice, beans, grilled vegetables, pico de gallo, and your choice of protein.</td>
+                    <td class="price">$12.00</td>
+                </tr>
+
+                <tr id="quesadillas">
+                    <td>Cheesy Quesadilla</td>
+                    <td>Toasted tortilla with melted cheese and salsa on the side.</td>
+                    <td class="price">$9.00</td>
+                </tr>
+
+                <tr id="sides">
+                    <td>Chips &amp; Guacamole</td>
+                    <td>Crispy tortilla chips with fresh, creamy guacamole.</td>
+                    <td class="price">$5.50</td>
+                </tr>
+
+                <tr id="drinks">
+                    <td>Horchata</td>
+                    <td>A chilled cinnamon rice drink.</td>
+                    <td class="price">$3.00</td>
+                </tr>
+
+                <tr id="desserts">
+                    <td>Churro Bites</td>
+                    <td>Warm cinnamon-sugar bites with chocolate dip.</td>
+                    <td class="price">$4.50</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Specials -->
+    <section class="specials" id="specials">
+        <h2>Good Deals. Great Tacos.</h2>
+
+        <p id="taco-tuesday">
+            <strong>Taco Tuesday:</strong>
+            Mix and match three street tacos for a special price.
+        </p>
+
+        <p id="lunch-deal">
+            <strong>Lunch Combo:</strong>
+            Pair a burrito bowl with a drink for an easy midday win.
+        </p>
+
+        <p id="family-night">
+            <strong>Family Night:</strong>
+            Bring your crew and make dinner the best part of the day.
+        </p>
+
+        <a href="#contact" class="button">Ask About Today's Specials</a>
+    </section>
+
+    <!-- Food photo gallery -->
+    <section class="gallery" id="locations">
+        <h2>Fresh Flavor, Wherever You Are</h2>
+
+        <p class="section-intro">
+            Stop by for a quick lunch, grab dinner on the go,
+            or bring your favorite people along.
+        </p>
+
+        <div class="gallery-grid">
+            <img
+                src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=85"
+                alt="Tacos prepared with fresh toppings"
+                loading="lazy"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=85"
+                alt="Fresh Mexican-inspired meal"
+                loading="lazy"
+            >
+        </div>
+
+        <p id="contact">
+            Have a question or planning a group meal?
+            We'd love to hear from you!
+        </p>
+
+        <a href="mailto:hello@tacoloco.example" class="button">
+            Contact Taco Loco
+        </a>
+    </section>
+
 </main>
 
+<!-- Footer -->
 <footer>
-  <p><strong>🌮 TACO LOCO</strong> — Fresh flavor, friendly faces.</p>
-  <p>Find us in your neighborhood · Made with love and a little salsa.</p>
-  <p>&copy; 2026 Courtney Chavez. All rights reserved.</p>
+    <p><strong>🌮 TACO LOCO</strong> — Fresh flavor, friendly faces.</p>
+    <p>Made with love and a little salsa.</p>
+    <p>&copy; 2026 Courtney Chavez. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
