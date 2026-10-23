@@ -1,616 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taco Loco | Fresh Flavor, Big Fun</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore the World</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #29243b;
+      background: #f7f3ff;
+    }
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #fff9ef;
-            color: #332c28;
-            line-height: 1.6;
-        }
+    header {
+      background: linear-gradient(120deg, #6c3ca5, #df78b7);
+      color: white;
+      text-align: center;
+      padding: 30px 16px;
+    }
 
-        /* Navigation bar */
-        header {
-            background-color: #b93b2d;
-            color: white;
-            min-height: 110px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 4%;
-            gap: 20px;
-            box-shadow: 0 5px 16px #0003;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+    header h1 {
+      margin: 0 0 8px;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ffd34e;
-            font-size: 30px;
-            font-weight: bold;
-            line-height: 1.1;
-            text-decoration: none;
-        }
+    /* Horizontal navigation bar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
+      background: #34244b;
+    }
 
-        .logo span:first-child {
-            font-size: 36px;
-        }
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .navbar > ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-        nav a,
-        .dropdown-label {
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-size: 17px;
-            padding: 12px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    .navbar li {
+      position: relative;
+    }
 
-        nav a:hover,
-        .dropdown-label:hover {
-            background-color: #8f2b22;
-            color: #ffd34e;
-        }
+    .navbar a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      color: white;
+      text-decoration: none;
+    }
 
-        /* Dropdown menus */
-        .dropdown {
-            position: relative;
-        }
+    .navbar a:hover,
+    .navbar a:focus {
+      background: #8056ad;
+      outline-offset: -3px;
+    }
 
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 230px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            background-color: #292929;
-            border-top: 5px solid #ffd34e;
-            box-shadow: 0 12px 24px #0004;
-        }
+    /* CSS image sprites */
+    .sprite {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+      background-image: url("https://www.w3schools.com/css/img_navsprites.gif");
+      background-repeat: no-repeat;
+    }
 
-        .dropdown:hover .dropdown-menu,
-        .dropdown:focus-within .dropdown-menu {
-            display: block;
-        }
+    .home-icon {
+      background-position: -46px 0;
+    }
 
-        .dropdown-menu a {
-            padding: 12px 16px;
-            border-bottom: 1px solid #444;
-            border-radius: 0;
-        }
+    .next-icon {
+      background-position: -91px 0;
+    }
 
-        .dropdown-menu a:hover {
-            background-color: #e64f3e;
-            color: white;
-        }
+    .prev-icon {
+      background-position: 0 0;
+    }
 
-        /* Homepage introduction */
-        .hero {
-            max-width: 1200px;
-            margin: auto;
-            padding: 60px 28px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 40px;
-        }
+    /* Second-level dropdown menus */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 190px;
+      background: #34244b;
+      z-index: 10;
+      box-shadow: 0 5px 12px #0003;
+    }
 
-        .eyebrow {
-            color: #b93b2d;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 13px;
-            font-weight: bold;
-        }
+    .dropdown:hover > .dropdown-menu,
+    .dropdown:focus-within > .dropdown-menu {
+      display: block;
+    }
 
-        h1 {
-            font-size: clamp(38px, 5vw, 58px);
-            line-height: 1.12;
-            margin: 12px 0 18px;
-        }
+    .dropdown-menu a {
+      padding: 11px 16px;
+    }
 
-        h1 span {
-            color: #b93b2d;
-        }
+    main {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 28px 18px;
+    }
 
-        .hero p {
-            font-size: 18px;
-            color: #5c514a;
-        }
+    .intro {
+      text-align: center;
+      margin-bottom: 26px;
+    }
 
-        /* Buttons */
-        .button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 14px 24px;
-            background-color: #b93b2d;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
-            box-shadow: 0 5px 0 #7f281f;
-            transition: opacity 0.3s, transform 0.3s;
-        }
+    /* Responsive image gallery using CSS Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
 
-        .button:hover {
-            opacity: 0.6;
-            transform: translateY(-3px);
-        }
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px #39244c1c;
+    }
 
-        /* Main food photo */
-        .hero-image {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border: 6px solid white;
-            border-radius: 25px 25px 70px 25px;
-            box-shadow: 0 12px 28px #0003;
-            transition: transform 0.4s, filter 0.4s;
-        }
+    .card img {
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
 
-        .hero-image:hover {
-            transform: scale(1.03);
-            filter: saturate(1.3);
-        }
+    .card img:hover {
+      transform: scale(1.03);
+    }
 
-        /* About section */
-        .features {
-            padding: 50px 25px;
-            text-align: center;
-            background-color: #f5e6d2;
-            border-top: 5px double #e4c6a5;
-            border-bottom: 5px double #e4c6a5;
-        }
+    .card-content {
+      padding: 16px 18px;
+    }
 
-        h2 {
-            font-size: 32px;
-            margin-top: 0;
-        }
+    footer {
+      background: #34244b;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      margin-top: 18px;
+    }
 
-        .section-intro {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: #66574e;
-        }
+    /* Responsive layout for phones */
+    @media (max-width: 650px) {
+      .navbar,
+      .navbar > ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            max-width: 1050px;
-            margin: auto;
-        }
+      .navbar a {
+        justify-content: flex-start;
+      }
 
-        .feature-card {
-            background-color: white;
-            padding: 25px;
-            border: 2px solid #f0d5b9;
-            border-radius: 15px;
-            box-shadow: 0 7px 18px #6a3b1a20;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        padding-left: 18px;
+      }
 
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 14px 25px #6a3b1a30;
-        }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
 
-        .feature-card .icon {
-            font-size: 35px;
-        }
+      .card img {
+        height: 220px;
+      }
 
-        .feature-card h3 {
-            color: #b93b2d;
-        }
+      header {
+        padding: 24px 14px;
+      }
 
-        /* Menu table */
-        .menu-section {
-            max-width: 1000px;
-            margin: auto;
-            padding: 60px 25px;
-        }
-
-        .menu-section h2 {
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 22px #0002;
-        }
-
-        th {
-            background-color: #292929;
-            color: #ffd34e;
-            text-align: left;
-        }
-
-        th,
-        td {
-            padding: 16px 20px;
-            border-bottom: 1px solid #eadfd4;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #fff0df;
-        }
-
-        tbody tr:hover {
-            background-color: #ffe0b5;
-        }
-
-        .price {
-            color: #b93b2d;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        /* Specials section */
-        .specials {
-            padding: 50px 25px;
-            text-align: center;
-            background-color: #b93b2d;
-            color: white;
-        }
-
-        .specials p {
-            max-width: 700px;
-            margin: 12px auto;
-        }
-
-        .specials .button {
-            background-color: #ffd34e;
-            color: #292929;
-            box-shadow: 0 5px 0 #9c7120;
-        }
-
-        /* Food gallery */
-        .gallery {
-            max-width: 1100px;
-            margin: auto;
-            padding: 55px 25px;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border: 5px solid white;
-            border-radius: 18px;
-            box-shadow: 0 8px 22px #0003;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-
-        .gallery-grid img:hover {
-            transform: scale(1.04);
-            opacity: 0.8;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #292929;
-            color: #f7eee5;
-            text-align: center;
-            padding: 28px 15px;
-        }
-
-        footer p {
-            margin: 5px;
-        }
-
-        /* Mobile layout */
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                flex-wrap: wrap;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .feature-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 39px;
-            }
-
-            th,
-            td {
-                padding: 10px;
-                font-size: 14px;
-            }
-        }
-    </style>
+      main {
+        padding: 20px 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header id="home">
+    <h1>Explore the World</h1>
+    <p>Discover beautiful places and plan your next adventure.</p>
+  </header>
 
-<header>
-    <a href="#home" class="logo">
-        <span>🌮</span>
-        <span>TACO<br>LOCO</span>
-    </a>
-
-    <nav>
-        <a href="#home">Home</a>
-
-        <div class="dropdown">
-            <a href="#menu" class="dropdown-label">Menu ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="#tacos">Tacos 🌮</a></li>
-                <li><a href="#burritos">Burritos &amp; Bowls</a></li>
-                <li><a href="#quesadillas">Quesadillas</a></li>
-                <li><a href="#sides">Sides &amp; Snacks</a></li>
-                <li><a href="#drinks">Drinks</a></li>
-                <li><a href="#desserts">Desserts</a></li>
-            </ul>
-        </div>
-
-        <div class="dropdown">
-            <a href="#specials" class="dropdown-label">Specials ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="#taco-tuesday">Taco Tuesday</a></li>
-                <li><a href="#lunch-deal">Lunch Combo</a></li>
-                <li><a href="#family-night">Family Night</a></li>
-            </ul>
-        </div>
-
-        <a href="#locations">Locations</a>
-
-        <div class="dropdown">
-            <a href="#about" class="dropdown-label">About Us ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="#our-story">Our Story</a></li>
-                <li><a href="#our-values">Our Values</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </div>
-
-        <a href="#menu">Order Now</a>
-    </nav>
-</header>
-
-<main>
-
-    <!-- Homepage description -->
-    <section class="hero" id="home">
-        <div>
-            <div class="eyebrow">
-                Fresh Ingredients • Big Flavor • Good Vibes
-            </div>
-
-            <h1>
-                Meet your new favorite
-                <span>taco spot.</span>
-            </h1>
-
-            <p>
-                Welcome to Taco Loco! We bring people together
-                with delicious Mexican-inspired food, fresh
-                ingredients, and bold flavors. From sizzling
-                street tacos to loaded burrito bowls, every meal
-                is made to satisfy your cravings.
-            </p>
-
-            <p>
-                Our goal is simple: serve great food, treat people
-                right, and make every visit something to look
-                forward to.
-            </p>
-
-            <a href="#menu" class="button">Explore Our Menu</a>
-        </div>
-
-        <img
-            class="hero-image"
-            src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1000&q=85"
-            alt="Fresh Mexican-inspired tacos"
-            loading="eager"
-        >
-    </section>
-
-    <!-- About Us -->
-    <section class="features" id="about">
-        <h2 id="our-values">Why Everyone Loves Taco Loco</h2>
-
-        <p class="section-intro" id="our-story">
-            We believe good food should bring people together.
-            That's why we focus on fresh ingredients, generous
-            portions, friendly service, and a relaxed atmosphere
-            where everyone feels welcome.
-        </p>
-
-        <div class="feature-grid">
-            <article class="feature-card">
-                <div class="icon">🥑</div>
-                <h3>Fresh Every Day</h3>
-                <p>Fresh toppings, zesty salsa, and ingredients selected for flavor.</p>
-            </article>
-
-            <article class="feature-card">
-                <div class="icon">🔥</div>
-                <h3>Made Your Way</h3>
-                <p>Choose your favorites and make your meal as mild or spicy as you like.</p>
-            </article>
-
-            <article class="feature-card">
-                <div class="icon">💛</div>
-                <h3>Good Food, Good Mood</h3>
-                <p>Friendly service and satisfying food without the fuss.</p>
-            </article>
-        </div>
-    </section>
-
-    <!-- Menu table -->
-    <section class="menu-section" id="menu">
-        <h2>A Little Taste of Taco Loco</h2>
-
-        <p class="section-intro" style="text-align:center">
-            Fresh favorites, easy prices, and something for everyone.
-        </p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Menu Favorite</th>
-                    <th>What's Inside</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr id="tacos">
-                    <td>Street Tacos 🌮</td>
-                    <td>Three corn tortillas, seasoned meat, onion, cilantro, and salsa.</td>
-                    <td class="price">$10.50</td>
-                </tr>
-
-                <tr id="burritos">
-                    <td>Burrito Bowl</td>
-                    <td>Rice, beans, grilled vegetables, pico de gallo, and your choice of protein.</td>
-                    <td class="price">$12.00</td>
-                </tr>
-
-                <tr id="quesadillas">
-                    <td>Cheesy Quesadilla</td>
-                    <td>Toasted tortilla with melted cheese and salsa on the side.</td>
-                    <td class="price">$9.00</td>
-                </tr>
-
-                <tr id="sides">
-                    <td>Chips &amp; Guacamole</td>
-                    <td>Crispy tortilla chips with fresh, creamy guacamole.</td>
-                    <td class="price">$5.50</td>
-                </tr>
-
-                <tr id="drinks">
-                    <td>Horchata</td>
-                    <td>A chilled cinnamon rice drink.</td>
-                    <td class="price">$3.00</td>
-                </tr>
-
-                <tr id="desserts">
-                    <td>Churro Bites</td>
-                    <td>Warm cinnamon-sugar bites with chocolate dip.</td>
-                    <td class="price">$4.50</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- Specials -->
-    <section class="specials" id="specials">
-        <h2>Good Deals. Great Tacos.</h2>
-
-        <p id="taco-tuesday">
-            <strong>Taco Tuesday:</strong>
-            Mix and match three street tacos for a special price.
-        </p>
-
-        <p id="lunch-deal">
-            <strong>Lunch Combo:</strong>
-            Pair a burrito bowl with a drink for an easy midday win.
-        </p>
-
-        <p id="family-night">
-            <strong>Family Night:</strong>
-            Bring your crew and make dinner the best part of the day.
-        </p>
-
-        <a href="#contact" class="button">Ask About Today's Specials</a>
-    </section>
-
-    <!-- Food photo gallery -->
-    <section class="gallery" id="locations">
-        <h2>Fresh Flavor, Wherever You Are</h2>
-
-        <p class="section-intro">
-            Stop by for a quick lunch, grab dinner on the go,
-            or bring your favorite people along.
-        </p>
-
-        <div class="gallery-grid">
-            <img
-                src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=85"
-                alt="Tacos prepared with fresh toppings"
-                loading="lazy"
-            >
-
-            <img
-                src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=85"
-                alt="Fresh Mexican-inspired meal"
-                loading="lazy"
-            >
-        </div>
-
-        <p id="contact">
-            Have a question or planning a group meal?
-            We'd love to hear from you!
-        </p>
-
-        <a href="mailto:hello@tacoloco.example" class="button">
-            Contact Taco Loco
+  <nav class="navbar" aria-label="Main navigation">
+    <ul>
+      <li>
+        <a href="#home">
+          <span class="sprite home-icon" aria-hidden="true"></span>
+          Home
         </a>
+      </li>
+
+      <li class="dropdown">
+        <a href="#destinations" aria-haspopup="true">
+          Destinations
+          <span class="sprite next-icon" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#mountains">Mountains</a></li>
+          <li><a href="#ocean">Ocean</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#about" aria-haspopup="true">
+          About
+          <span class="sprite next-icon" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <main id="destinations">
+    <section class="intro">
+      <h2>Find Your Next Adventure</h2>
+      <p>
+        From peaceful mountain views to relaxing ocean beaches,
+        there is always somewhere new to explore.
+      </p>
     </section>
 
-</main>
+    <section class="gallery" aria-label="Featured destinations">
+      <article class="card" id="mountains">
+        <img
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
+          alt="Mountain peaks under a bright sky">
+        <div class="card-content">
+          <h3>Mountain Escapes</h3>
+          <p>
+            Enjoy fresh air, scenic hiking trails, and amazing
+            views in the mountains.
+          </p>
+        </div>
+      </article>
 
-<!-- Footer -->
-<footer>
-    <p><strong>🌮 TACO LOCO</strong> — Fresh flavor, friendly faces.</p>
-    <p>Made with love and a little salsa.</p>
-    <p>&copy; 2026 Courtney Chavez. All rights reserved.</p>
-</footer>
+      <article class="card" id="ocean">
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+          alt="Blue ocean waves meeting a sandy beach">
+        <div class="card-content">
+          <h3>Ocean Getaways</h3>
+          <p>
+            Relax by the water, walk along the beach, and enjoy
+            the sound of the waves.
+          </p>
+        </div>
+      </article>
+    </section>
 
+    <section id="about">
+      <h2>About This Page</h2>
+      <p>
+        This page shares travel inspiration and demonstrates a
+        two-level navigation menu, CSS sprites, links, and a
+        responsive layout.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Thanks for visiting! Use the navigation menu to explore this page.</p>
+      <a href="#home">Back to top</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Explore the World</p>
+  </footer>
 </body>
 </html>
