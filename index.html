@@ -1,298 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore the World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Statements</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+        /* Page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f0ff;
+            margin: 0;
+            padding: 20px;
+        }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      color: #29243b;
-      background: #f7f3ff;
-    }
+        /* Header styling */
+        header {
+            background-color: #6a0dad;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+        }
 
-    header {
-      background: linear-gradient(120deg, #6c3ca5, #df78b7);
-      color: white;
-      text-align: center;
-      padding: 30px 16px;
-    }
+        /* Navigation bar styling */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
 
-    header h1 {
-      margin: 0 0 8px;
-    }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
-    /* Horizontal navigation bar */
-    .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      flex-wrap: wrap;
-      background: #34244b;
-    }
+        nav a:hover {
+            background-color: #e75480;
+            color: white;
+        }
 
-    .navbar ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+        /* Paragraph styling */
+        p {
+            color: #4b286d;
+            font-size: 18px;
+            background-color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-left: 5px solid #c084fc;
+            border-radius: 5px;
+        }
 
-    .navbar > ul {
-      display: flex;
-      flex-wrap: wrap;
-    }
+        /* Button-style link with opacity */
+        .button {
+            display: inline-block;
+            background-color: rgba(106, 13, 173, 0.8);
+            color: white;
+            padding: 12px 24px;
+            margin-top: 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
 
-    .navbar li {
-      position: relative;
-    }
+        .button:hover {
+            opacity: 0.6;
+        }
 
-    .navbar a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 18px;
-      color: white;
-      text-decoration: none;
-    }
+        /* Responsive design for screens 480px and wider */
+        @media screen and (min-width: 480px) {
+            body {
+                padding: 30px;
+            }
 
-    .navbar a:hover,
-    .navbar a:focus {
-      background: #8056ad;
-      outline-offset: -3px;
-    }
+            header {
+                font-size: 20px;
+            }
 
-    /* CSS image sprites */
-    .sprite {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      flex: 0 0 16px;
-      background-image: url("https://www.w3schools.com/css/img_navsprites.gif");
-      background-repeat: no-repeat;
-    }
+            p {
+                font-size: 20px;
+            }
+        }
 
-    .home-icon {
-      background-position: -46px 0;
-    }
+        /* Keep navigation and content usable on smaller screens */
+        @media screen and (max-width: 479px) {
+            nav a {
+                float: none;
+                width: auto;
+            }
 
-    .next-icon {
-      background-position: -91px 0;
-    }
-
-    .prev-icon {
-      background-position: 0 0;
-    }
-
-    /* Second-level dropdown menus */
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 190px;
-      background: #34244b;
-      z-index: 10;
-      box-shadow: 0 5px 12px #0003;
-    }
-
-    .dropdown:hover > .dropdown-menu,
-    .dropdown:focus-within > .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu a {
-      padding: 11px 16px;
-    }
-
-    main {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 28px 18px;
-    }
-
-    .intro {
-      text-align: center;
-      margin-bottom: 26px;
-    }
-
-    /* Responsive image gallery using CSS Grid */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px #39244c1c;
-    }
-
-    .card img {
-      display: block;
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      transition: transform 0.25s ease;
-    }
-
-    .card img:hover {
-      transform: scale(1.03);
-    }
-
-    .card-content {
-      padding: 16px 18px;
-    }
-
-    footer {
-      background: #34244b;
-      color: white;
-      text-align: center;
-      padding: 18px;
-      margin-top: 18px;
-    }
-
-    /* Responsive layout for phones */
-    @media (max-width: 650px) {
-      .navbar,
-      .navbar > ul {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .navbar a {
-        justify-content: flex-start;
-      }
-
-      .dropdown-menu {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        padding-left: 18px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .card img {
-        height: 220px;
-      }
-
-      header {
-        padding: 24px 14px;
-      }
-
-      main {
-        padding: 20px 14px;
-      }
-    }
-  </style>
+            body {
+                padding: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header id="home">
-    <h1>Explore the World</h1>
-    <p>Discover beautiful places and plan your next adventure.</p>
-  </header>
 
-  <nav class="navbar" aria-label="Main navigation">
-    <ul>
-      <li>
-        <a href="#home">
-          <span class="sprite home-icon" aria-hidden="true"></span>
-          Home
-        </a>
-      </li>
+    <header>
+        <h1>JavaScript Statements</h1>
+        <p>Learn how JavaScript variables and math work!</p>
+    </header>
 
-      <li class="dropdown">
-        <a href="#destinations" aria-haspopup="true">
-          Destinations
-          <span class="sprite next-icon" aria-hidden="true"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#mountains">Mountains</a></li>
-          <li><a href="#ocean">Ocean</a></li>
-        </ul>
-      </li>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
 
-      <li class="dropdown">
-        <a href="#about" aria-haspopup="true">
-          About
-          <span class="sprite next-icon" aria-hidden="true"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#about">Our Story</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+    <main>
+        <section id="about">
+            <h2>About JavaScript</h2>
+            <p>JavaScript statements are separated by semicolons.</p>
+        </section>
 
-  <main id="destinations">
-    <section class="intro">
-      <h2>Find Your Next Adventure</h2>
-      <p>
-        From peaceful mountain views to relaxing ocean beaches,
-        there is always somewhere new to explore.
-      </p>
-    </section>
+        <section id="services">
+            <h2>JavaScript Results</h2>
 
-    <section class="gallery" aria-label="Featured destinations">
-      <article class="card" id="mountains">
-        <img
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
-          alt="Mountain peaks under a bright sky">
-        <div class="card-content">
-          <h3>Mountain Escapes</h3>
-          <p>
-            Enjoy fresh air, scenic hiking trails, and amazing
-            views in the mountains.
-          </p>
-        </div>
-      </article>
+            <p id="demo1"></p>
+            <p id="demo2"></p>
+            <p id="demo3"></p>
+            <p id="demo4"></p>
+            <p id="demo5"></p>
+        </section>
 
-      <article class="card" id="ocean">
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
-          alt="Blue ocean waves meeting a sandy beach">
-        <div class="card-content">
-          <h3>Ocean Getaways</h3>
-          <p>
-            Relax by the water, walk along the beach, and enjoy
-            the sound of the waves.
-          </p>
-        </div>
-      </article>
-    </section>
+        <section id="contact">
+            <h2>Learn More</h2>
+            <p>Visit Google to explore more information online.</p>
+            <a class="button" href="https://www.google.com" target="_blank">
+                Visit Google
+            </a>
+        </section>
+    </main>
 
-    <section id="about">
-      <h2>About This Page</h2>
-      <p>
-        This page shares travel inspiration and demonstrates a
-        two-level navigation menu, CSS sprites, links, and a
-        responsive layout.
-      </p>
-    </section>
+    <script>
+        let a = 10;
+        let b = 5;
+        let c = a - b;
+        let d = 15;
+        let e = c + d;
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Thanks for visiting! Use the navigation menu to explore this page.</p>
-      <a href="#home">Back to top</a>
-    </section>
-  </main>
+        document.getElementById("demo1").innerHTML = "a = " + a;
+        document.getElementById("demo2").innerHTML = "b = " + b;
+        document.getElementById("demo3").innerHTML = "c = a - b = " + c;
+        document.getElementById("demo4").innerHTML = "d = " + d;
+        document.getElementById("demo5").innerHTML = "e = c + d = " + e;
+    </script>
 
-  <footer>
-    <p>&copy; 2026 Explore the World</p>
-  </footer>
 </body>
 </html>
