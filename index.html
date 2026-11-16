@@ -3,86 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript If/Else Statements</title>
+    <title>Random Number Website</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #f3e5f5, #fce4ec);
+            background-color: #f8eaff;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+            text-align: center;
         }
 
         header {
-            background-color: #702b78;
+            background-color: #7b2cbf;
             color: white;
-            text-align: center;
-            padding: 30px;
-            border-radius: 12px;
+            padding: 25px;
         }
 
+        h1 {
+            margin: 0;
+        }
+
+        /* Navigation bar */
         nav {
-            background-color: #d66ba0;
-            padding: 15px;
-            text-align: center;
-            margin-top: 15px;
-            border-radius: 8px;
+            background-color: #d63384;
+            display: flex;
+            justify-content: center;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 15px;
-            font-weight: bold;
+            padding: 15px 25px;
+            display: block;
         }
 
         nav a:hover {
-            color: #4a174f;
+            background-color: #7b2cbf;
+            color: #ffccff;
         }
 
-        section {
+        .container {
             background-color: white;
-            padding: 20px;
-            margin: 20px 0;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: #873b91;
-            border-bottom: 2px solid #e6a4c4;
-            padding-bottom: 8px;
-        }
-
-        h3 {
-            color: #bd568d;
-        }
-
-        code {
-            background-color: #f4e8f5;
-            padding: 3px 6px;
-            border-radius: 4px;
-            color: #702b78;
-        }
-
-        pre {
-            background-color: #2d2633;
-            color: #fce4ec;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-        }
-
-        .example {
-            background-color: #fff0f6;
-            padding: 15px;
-            border-left: 5px solid #d66ba0;
-            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         button {
-            background-color: #873b91;
+            background-color: #9d4edd;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -92,247 +63,153 @@
         }
 
         button:hover {
-            background-color: #d66ba0;
+            background-color: #d63384;
         }
 
         input {
+            width: 90%;
             padding: 10px;
-            border: 2px solid #d66ba0;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
-            width: 150px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-left: 4%;
+            font-weight: bold;
         }
 
         #result {
             font-weight: bold;
-            color: #702b78;
+            color: #7b2cbf;
             margin-top: 15px;
         }
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            color: #702b78;
+        /* Responsive navigation */
+        @media screen and (max-width: 500px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                text-align: center;
+            }
+
+            .container {
+                margin: 20px 10px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Understanding JavaScript If/Else Statements</h1>
-    <p>Learn how JavaScript makes decisions using conditions.</p>
-</header>
+    <header>
+        <h1>Random Website Selector</h1>
+        <p>Generate a random number and visit a website!</p>
+    </header>
 
-<nav>
-    <a href="#introduction">Introduction</a>
-    <a href="#how">How It Works</a>
-    <a href="#examples">Examples</a>
-    <a href="#practice">Try It Yourself</a>
-</nav>
+    <!-- Navigation bar -->
+    <nav>
+        <a href="https://www.yahoo.com">Yahoo</a>
+        <a href="https://www.google.com">Google</a>
+        <a href="https://www.facebook.com/login/">Facebook</a>
+    </nav>
 
-<section id="introduction">
-    <h2>What Is an If/Else Statement?</h2>
+    <div class="container">
+        <h2>Random Number Generator</h2>
 
-    <p>
-        An if/else statement is a feature in JavaScript that allows a program
-        to make decisions. It checks whether something is true or false and
-        then decides which code to run.
-    </p>
+        <p>Click the button to generate a random number between 1 and 10.</p>
 
-    <p>
-        For example, a website could use an if/else statement to check
-        someone's age. If the person is 18 or older, they can continue.
-        Otherwise, the website can display a message saying they are too young.
-    </p>
+        <button onclick="chooseWebsite()">Generate Number</button>
 
-    <div class="example">
-        <strong>Think of it this way:</strong>
-        If it is raining, bring an umbrella. Else, leave the umbrella at home.
-        The program chooses what to do based on the condition.
+        <p id="result"></p>
     </div>
-</section>
 
-<section id="how">
-    <h2>How Does If/Else Work?</h2>
+    <div class="container">
+        <h2>Contact Form</h2>
 
-    <p>An if/else statement has three main parts:</p>
+        <form onsubmit="return validateForm()">
 
-    <ol>
-        <li><strong>if:</strong> Checks whether a condition is true.</li>
-        <li><strong>else if:</strong> Checks another condition if the first one is false.</li>
-        <li><strong>else:</strong> Runs when none of the previous conditions are true.</li>
-    </ol>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
 
-    <h3>Basic Syntax</h3>
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Enter your email">
 
-    <pre><code>
-if (condition) {
-    // Code runs if the condition is true
-} else {
-    // Code runs if the condition is false
-}
-    </code></pre>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter a password">
 
-    <p>
-        The condition goes inside parentheses. The curly brackets contain
-        the instructions JavaScript should follow. If the condition is true,
-        JavaScript runs the first section. If it is false, JavaScript runs
-        the else section instead.
-    </p>
-</section>
+            <button type="submit">Submit Form</button>
 
-<section id="examples">
-    <h2>JavaScript If/Else Examples</h2>
-
-    <h3>Example 1: Checking Age</h3>
-
-    <p>This example checks whether someone is old enough to vote.</p>
-
-    <pre><code>
-let age = 20;
-
-if (age >= 18) {
-    console.log("You are old enough to vote!");
-} else {
-    console.log("You are not old enough to vote.");
-}
-    </code></pre>
-
-    <p>
-        Since the age is 20, the condition age >= 18 is true.
-        JavaScript displays the first message.
-    </p>
-
-    <h3>Example 2: Using Else If</h3>
-
-    <p>
-        An else if statement allows JavaScript to check multiple conditions.
-        This is useful when there are more than two possible outcomes.
-    </p>
-
-    <pre><code>
-let grade = 85;
-
-if (grade >= 90) {
-    console.log("You got an A!");
-} else if (grade >= 80) {
-    console.log("You got a B!");
-} else if (grade >= 70) {
-    console.log("You got a C!");
-} else {
-    console.log("You need to study more.");
-}
-    </code></pre>
-
-    <p>
-        In this example, the grade is 85. The first condition is false,
-        but the second condition is true. JavaScript displays
-        "You got a B!" and skips the remaining conditions.
-    </p>
-
-    <h3>Example 3: Checking the Weather</h3>
-
-    <pre><code>
-let temperature = 75;
-
-if (temperature > 80) {
-    console.log("It is hot outside!");
-} else if (temperature >= 60) {
-    console.log("The weather is nice!");
-} else {
-    console.log("It is cold outside!");
-}
-    </code></pre>
-
-    <p>
-        Because the temperature is 75, JavaScript displays
-        "The weather is nice!"
-    </p>
-</section>
-
-<section>
-    <h2>Comparison Operators</h2>
-
-    <p>
-        Comparison operators are used inside if/else statements to compare
-        two values. They help JavaScript determine whether a condition is true or false.
-    </p>
-
-    <ul>
-        <li><code>==</code> Equal to (compares values).</li>
-        <li><code>===</code> Strictly equal to (compares value and data type).</li>
-        <li><code>!=</code> Not equal to.</li>
-        <li><code>!==</code> Strictly not equal to.</li>
-        <li><code>&gt;</code> Greater than.</li>
-        <li><code>&lt;</code> Less than.</li>
-        <li><code>&gt;=</code> Greater than or equal to.</li>
-        <li><code>&lt;=</code> Less than or equal to.</li>
-    </ul>
-
-    <div class="example">
-        <strong>Example:</strong>
-        <code>if (10 &gt; 5)</code> is true because 10 is greater than 5.
-        JavaScript will run the code inside the if statement.
+        </form>
     </div>
-</section>
-
-<section>
-    <h2>Why Are If/Else Statements Important?</h2>
-
-    <p>
-        If/else statements are important because they allow websites and
-        applications to respond differently depending on what a user does
-        or enters. Without them, programs would have a harder time making
-        decisions.
-    </p>
-
-    <p>They can be used for:</p>
-
-    <ul>
-        <li>Checking passwords and login information.</li>
-        <li>Determining if someone is old enough to access something.</li>
-        <li>Giving students letter grades based on scores.</li>
-        <li>Showing different messages based on user choices.</li>
-        <li>Checking whether information entered into a form is correct.</li>
-    </ul>
-</section>
-
-<section id="practice">
-    <h2>Try It Yourself!</h2>
-
-    <p>
-        Enter a number below to see how an if/else statement works.
-        The program will check whether your number is positive, negative, or zero.
-    </p>
-
-    <input type="number" id="numberInput" placeholder="Enter a number">
-
-    <button onclick="checkNumber()">Check Number</button>
-
-    <p id="result"></p>
 
     <script>
-        function checkNumber() {
-            let number = Number(document.getElementById("numberInput").value);
-            let result = document.getElementById("result");
 
-            if (document.getElementById("numberInput").value === "") {
-                result.innerHTML = "Please enter a number.";
-            } else if (number > 0) {
-                result.innerHTML = "Your number is positive!";
-            } else if (number < 0) {
-                result.innerHTML = "Your number is negative!";
+        // Generate a random number and choose a website
+        function chooseWebsite() {
+
+            let number = Math.floor(Math.random() * 10) + 1;
+
+            document.getElementById("result").innerHTML =
+                "Your random number is: " + number;
+
+            if (number < 3) {
+                document.getElementById("result").innerHTML +=
+                    "<br>Taking you to Yahoo!";
+
+                setTimeout(function() {
+                    window.location.href = "https://www.yahoo.com";
+                }, 2000);
+
+            } else if (number >= 3 && number <= 5) {
+                document.getElementById("result").innerHTML +=
+                    "<br>Taking you to Google!";
+
+                setTimeout(function() {
+                    window.location.href = "https://www.google.com";
+                }, 2000);
+
             } else {
-                result.innerHTML = "Your number is zero!";
+                document.getElementById("result").innerHTML +=
+                    "<br>Taking you to Facebook!";
+
+                setTimeout(function() {
+                    window.location.href = "https://www.facebook.com/login/";
+                }, 2000);
             }
         }
-    </script>
-</section>
 
-<footer>
-    <p>JavaScript Learning Page | Understanding If/Else Statements</p>
-</footer>
+        // Validate the three form fields
+        function validateForm() {
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+
+            if (name === "") {
+                alert("Please enter your name.");
+                return false;
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert("Your password must be at least 6 characters long.");
+                return false;
+            }
+
+            alert("Your form was submitted successfully!");
+            return false;
+        }
+
+    </script>
 
 </body>
 </html>
